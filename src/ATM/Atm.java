@@ -8,24 +8,28 @@ public class Atm {
         Bank bank = new Bank();
         Gui gui = new Gui();
 
+        Account account=new Account();
         login:
+
         //for login
         while(true) {
-            Account account=new Account();
             cardNum = gui.welcomeScreen();
             if ((account = bank.isAvailable(cardNum)) != null) {
                 // gui.showDetails(bank.accounts.get(currentUserIndex));
                 gui.showDetails(account);
-
+                break;
             } else {
                 gui.throwError("Card number not Available!");
             }
+        }
 
-
-            if (account.pin == 0) account.pin = gui.setPinPage();
+            if (account.pin == 0) {
+                account.pin = gui.setPinPage();
+            }
 
             while (true) {
                 int choice = gui.homepage();
+
                 switch (choice) {
                     case 1 -> {
                         account.withdraw();
@@ -39,10 +43,6 @@ public class Atm {
                         account.checkBalance();
                         break;
                     }
-                    case 4 -> {
-                        continue login;
-
-                    }
                     case 0 -> {
                         exit();
                         return;
@@ -53,7 +53,6 @@ public class Atm {
 
                 }
             }
-        }
 
 //        if(bank.accounts.get(currentUserIndex).pin == 0){
 //            gui.throwError("You are new User.");
@@ -64,7 +63,7 @@ public class Atm {
 
     }
     void exit(){
-        //for writing in file i will write tomorrow
+        // for writing in file tomorrow
     }
 
 }

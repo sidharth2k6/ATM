@@ -43,7 +43,7 @@ public class Gui {
                 return enteredPin;
             }
             else{
-                throwError("Invalid, Try again!");
+                System.out.println("Invalid, Try again!");
             }
         }
     }
