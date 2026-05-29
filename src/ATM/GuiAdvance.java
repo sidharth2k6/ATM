@@ -15,7 +15,7 @@ public class GuiAdvance extends JFrame implements ActionListener
      GuiAdvance(){
         setLayout(new FlowLayout());
         setTitle("ATM");
-        //setSize(300, 400);//does not work 
+         setSize(new Dimension(600, 400));
         JPanel panel = new JPanel();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
