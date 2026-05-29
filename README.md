@@ -1,3 +1,2 @@
 ATM Simulation
-Create by Sidharth
-modify by Golu Bhai
+Create by Sidharth, Golu Bhai, sahil
