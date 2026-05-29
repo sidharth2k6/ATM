@@ -1,5 +1,6 @@
 package ATM;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Gui {
@@ -8,6 +9,15 @@ public class Gui {
     int welcomeScreen(){
         System.out.print("Enter your Card Number: ");
         return  scanner.nextInt();
+    }
+
+    int homepage(){
+        System.out.println("\nEnter choice: ");
+        System.out.println("1. Withdraw");
+        System.out.println("2. deposit");
+        System.out.println("3. check balance");
+        System.out.println("0. for exit");
+        return scanner.nextInt();
     }
 
     void throwError(String massage){
@@ -22,14 +32,14 @@ public class Gui {
     }
 
     int setPinPage(){
-        int enteredPin;
 
         while(true){
             System.out.print("Enter your pin: ");
-            enteredPin = scanner.nextInt();
+            int enteredPin = scanner.nextInt();
             System.out.print("Confirm pin: ");
 
             if(enteredPin == scanner.nextInt()){
+
                 return enteredPin;
             }
             else{
@@ -37,4 +47,5 @@ public class Gui {
             }
         }
     }
+
 }

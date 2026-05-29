@@ -59,7 +59,7 @@ public class File {
         return -1;
     }
 
-    Account userAccount(int cardNum){
+    Account isAvailable(int cardNum){
         for(Account account : accounts){
             if(account.cardNumber == cardNum) return account;
         }

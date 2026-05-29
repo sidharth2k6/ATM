@@ -8,20 +8,52 @@ public class Atm {
         Bank bank = new Bank();
         Gui gui = new Gui();
 
+        login:
         //for login
-        while(true){
+        while(true) {
+            Account account=new Account();
             cardNum = gui.welcomeScreen();
-            if(bank.isAvailable(cardNum) && cardNum != 0){
-                //currentUserIndex = bank.getIndex(cardNum);
-                break;
-            }
-            else{
+            if ((account = bank.isAvailable(cardNum)) != null) {
+                // gui.showDetails(bank.accounts.get(currentUserIndex));
+                gui.showDetails(account);
+
+            } else {
                 gui.throwError("Card number not Available!");
             }
-        }
 
-        //gui.showDetails(bank.accounts.get(currentUserIndex));
-//        gui.showDetails(bank.account);
+
+            if (account.pin == 0) account.pin = gui.setPinPage();
+
+            while (true) {
+                int choice = gui.homepage();
+                switch (choice) {
+                    case 1 -> {
+                        account.withdraw();
+                        break;
+                    }
+                    case 2 -> {
+                        account.deposit();
+                        break;
+                    }
+                    case 3 -> {
+                        account.checkBalance();
+                        break;
+                    }
+                    case 4 -> {
+                        continue login;
+
+                    }
+                    case 0 -> {
+                        exit();
+                        return;
+                    }
+                    default -> {
+                        System.out.println("Wrong choice");
+                    }
+
+                }
+            }
+        }
 
 //        if(bank.accounts.get(currentUserIndex).pin == 0){
 //            gui.throwError("You are new User.");
@@ -30,6 +62,9 @@ public class Atm {
 //
 //        gui.showDetails(bank.accounts.get(currentUserIndex));
 
+    }
+    void exit(){
+        //for writing in file i will write tomorrow
     }
 
 }

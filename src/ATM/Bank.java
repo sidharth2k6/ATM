@@ -8,7 +8,7 @@ public class Bank extends File{
 //
 //    ArrayList<Account> accounts = new ArrayList<>();
 
-    Account account=new Account();
+
 
     //File file =new File();
 
@@ -69,7 +69,7 @@ public class Bank extends File{
 //        return -1;
 //    }
 
-    boolean isAvailable(int cardNum){
-        return (account = userAccount(cardNum)) != null;
-    }
+//    boolean isAvailable(int cardNum){
+//        return (account = userAccount(cardNum)) != null;
+//    }
 }
