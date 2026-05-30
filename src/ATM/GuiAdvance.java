@@ -1,4 +1,4 @@
-package ATM;
+//package ATM;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -11,13 +11,14 @@ public class GuiAdvance extends JFrame implements ActionListener
     String s0="";
     JLabel card;
 
+
      GuiAdvance(){
         setLayout(new FlowLayout());
         setTitle("ATM");
-         setSize(600, 400);
+        setSize(600, 400);//does not work 
         JPanel panel = new JPanel();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        
         card = new JLabel("enter card no:");
         text = new JTextField(10);
         eq = new JButton("=");
@@ -49,24 +50,38 @@ public class GuiAdvance extends JFrame implements ActionListener
     }
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
-        if (s.charAt(0) >= '0' && s.charAt(0) <= '9') {
-            s0 += s;
-            text.setText(s0);
-//            if (!s0.equals("")) {
-//                text.setText("enter no:");
-//            } else {
-//                s0 += s;
-//            }
-//            text.setText(s0);
+        if (s.charAt(0) >= '0' && s.charAt(0) <= '9') 
+        {
+            s0+=s;
+            text.setText(s0);       
         }
-        else if(s.equals("clr")){
-            s0 = "";
-            text.setText(s0);
-        }
-        else if(s.equals("=")){
-            JOptionPane.showMessageDialog(this, "Entered card number: " + s0);
-        }
+        else if (s.equals("="))
+        {
+            double result;
+            result = Double.parseDouble(s0);
+            if(result==123)//give value in place of 123;
+            {
+                text.setText("match");
+                s0 = String.valueOf(result);
+                s0="";
+            }
+            else if(s.equals(">"))
+            {
 
+            // text.setText(String.valueOf(result));
+            // 
+                text.setText("match");
+            }
+            else 
+           {
+                text.setText("empty enter number");
+           } 
+        }
+        else if(s.equals ("clr"))
+        {
+            s0="";
+            text.setText(s0);
+        }
     }
 public static void main(String[] args) {
         new GuiAdvance().setVisible(true);
