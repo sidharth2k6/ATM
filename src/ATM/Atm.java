@@ -28,29 +28,12 @@ public class Atm {
             }
 
             while (true) {
-                int choice = gui.homepage();
-
-                switch (choice) {
-                    case 1 -> {
-                        account.withdraw();
-                        break;
-                    }
-                    case 2 -> {
-                        account.deposit();
-                        break;
-                    }
-                    case 3 -> {
-                        account.checkBalance();
-                        break;
-                    }
-                    case 0 -> {
-                        exit();
-                        return;
-                    }
-                    default -> {
-                        System.out.println("Wrong choice");
-                    }
-
+                switch (gui.homepage()) {
+                    case 1 -> account.withdraw();
+                    case 2 -> account.deposit();
+                    case 3 -> account.checkBalance();
+                    case 0 -> exit();
+                    default -> gui.throwError("Wrong choice");
                 }
             }
 
